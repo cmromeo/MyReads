@@ -20,9 +20,9 @@ class Shelves extends Component {
                 <div className="list-books-title">
                     <h1>MyReads</h1>
                 </div>
-                <Shelf shelf={currentlyReading} title="Currently Reading" />
-                <Shelf shelf={wantToRead} title="Want to Read" />
-                <Shelf shelf={read} title="Read" />
+                <Shelf shelf={currentlyReading} title="Currently Reading" changeShelf={this.props.changeShelf} />
+                <Shelf shelf={wantToRead} title="Want to Read" changeShelf={this.props.changeShelf} />
+                <Shelf shelf={read} title="Read" changeShelf={this.props.changeShelf} />
 
                 <div className="open-search">
                     <Link 

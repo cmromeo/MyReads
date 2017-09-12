@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 
 class Shelf extends Component {
+    onShelfChange(book, e){
+        this.props.changeShelf(book, e.target.value);
+    }
     render(){
-        console.log("shelf contains: ", this.props.shelf)
         return(
             <div className="list-books-content">
                 <div>
@@ -21,7 +23,7 @@ class Shelf extends Component {
                                                     backgroundRepeat: "no-repeat",
                                                     backgroundSize: "cover" }}></div>
                                             <div className="book-shelf-changer">
-                                            <select value={book.shelf} >
+                                            <select value={book.shelf} onChange={(e) => this.onShelfChange(book, e)} >
                                                 <option value="wantToRead" disabled>Move to...</option>
                                                 <option value="currentlyReading" >Currently Reading</option>
                                                 <option value="wantToRead">Want to Read</option>

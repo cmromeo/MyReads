@@ -17,6 +17,13 @@ class BooksApp extends React.Component {
         });
     }
 
+    updateShelf = (book, shelf) => {
+        BooksAPI.update(book, shelf).then((jsonResponse) => {
+            this.downloadBooks();
+            console.log('db changed state: ', this.state);
+        });
+    }
+
     componentDidMount(){
         this.downloadBooks();
     }
@@ -25,9 +32,9 @@ class BooksApp extends React.Component {
         return (
             <div className="app">
                 <Route exact path='/' render={() => (
-                    <Shelves books={this.state.books} />
+                    <Shelves books={this.state.books} changeShelf={this.updateShelf} />
                 )}/>
-                <Route exact path='/search' render={({history}) => (
+                <Route exact path='/search' render={({history})  => (
                     <Search  />
                 )}/>
             </div>
