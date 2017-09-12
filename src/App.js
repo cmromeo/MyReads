@@ -14,7 +14,6 @@ class BooksApp extends React.Component {
     downloadBooks = () => {
         BooksAPI.getAll().then((books) => {
             this.setState({books});
-            console.log(this.state);
         });
     }
 
@@ -26,7 +25,7 @@ class BooksApp extends React.Component {
         return (
             <div className="app">
                 <Route exact path='/' render={() => (
-                    <Shelves  />
+                    <Shelves books={this.state.books} />
                 )}/>
                 <Route exact path='/search' render={({history}) => (
                     <Search  />
