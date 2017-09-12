@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 
 class Shelves extends Component {
 
@@ -6,6 +7,11 @@ class Shelves extends Component {
         return (
             <div>
                 Hi Shelves!
+                <div className="open-search">
+                    <Link 
+                      to="/search"
+                    >Add a book</Link>
+                </div>
             </div>
         )
     }
