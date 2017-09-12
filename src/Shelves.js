@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+import Shelf from './Shelf';
 
 class Shelves extends Component {
 
@@ -14,13 +15,15 @@ class Shelves extends Component {
             return book.shelf === "read";
         });
 
-        console.log('currently reading: ', currentlyReading);
-        console.log('wantToRead: ', wantToRead);
-        console.log('read: ', read);
-
         return (
-            <div>
-                Hi Shelves!
+            <div className="list-books">
+                <div className="list-books-title">
+                    <h1>MyReads</h1>
+                </div>
+                <Shelf shelf={currentlyReading} title="Currently Reading" />
+                <Shelf shelf={wantToRead} title="Want to Read" />
+                <Shelf shelf={read} title="Read" />
+
                 <div className="open-search">
                     <Link 
                       to="/search"
