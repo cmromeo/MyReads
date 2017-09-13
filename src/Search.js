@@ -27,9 +27,11 @@ class Search extends Component {
             });
         }
     }
+
     
     render() {
-        const {searchedBooks} = this.state
+        const {books} = this.props;
+        const {searchedBooks} = this.state;
 
         return (
             <div className="search-books">
@@ -45,7 +47,16 @@ class Search extends Component {
                 </div>
                 <div className="search-books-results">
                     <ol className="books-grid">
-                        {searchedBooks.map((book) => {
+                        {searchedBooks && searchedBooks.map((book) => {
+                            //check if this book is already in my collection, then show correct shelf
+                            let myBook = books.filter((myOneBook) => {
+                                return myOneBook.id === book.id;
+                            });
+                            if (myBook.length === 1) {
+                                book.shelf = myBook[0].shelf;
+                            }else {
+                                book.shelf = "none";
+                            }
                             
                             return (
                             <li key={book.id}>
@@ -57,7 +68,7 @@ class Search extends Component {
                                             backgroundRepeat: "no-repeat",
                                             backgroundSize: "cover" }}></div>
                                     <div className="book-shelf-changer">
-                                    <select value={book.shelf}  >
+                                    <select value={book.shelf} >
                                         <option value="wantToRead" disabled>Move to...</option>
                                         <option value="currentlyReading" >Currently Reading</option>
                                         <option value="wantToRead">Want to Read</option>
