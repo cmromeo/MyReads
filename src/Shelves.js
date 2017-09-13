@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import Shelf from './Shelf';
 
+/**
+* @description The component that displays a list of books by the user
+*/
 class Shelves extends Component {
 
     render() {

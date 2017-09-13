@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
 
+/**
+* @description The component that displays the details of a book
+*/
 class Shelf extends Component {
+
+    /**
+    * @description Called when a user changes the shelf of a book
+    * @param {book} book - A book object
+    * @param {e} e - The event triggered when the user changes the select value
+    */
     onShelfChange(book, e){
         this.props.changeShelf(book, e.target.value);
     }
+
     render(){
         return(
             <div className="list-books-content">
@@ -47,6 +57,6 @@ class Shelf extends Component {
             </div>
         )
     }
-
 }
+
 export default Shelf;

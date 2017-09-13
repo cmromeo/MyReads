@@ -3,20 +3,35 @@ import {Link} from 'react-router-dom';
 import * as BooksAPI from './BooksAPI'
 import sortBy from 'sort-by'
 
+/**
+* @description The Search component
+*/
 class Search extends Component {
 
+    /**
+    * @description The state of this component 
+    */
     state = {
         searchedBooks: []
     }
 
+    /**
+    * @description Called when a user changes the shelf of a book
+    * @param {book} book - A book object
+    * @param {e} e - The event triggered when the user changes the select value
+    */
     onShelfChange(book, e){
         this.props.changeShelf(book, e.target.value);
     }
 
+    /**
+    * @description Called when a user changes the text in the search input field 
+    * @param {query} query - The text in the search input field
+    */
     searchBooks(query){
         if (query){
+            /** * @description Backend returns maximum of 20 */
             BooksAPI.search(query, 20).then((booksSearched) => {
-                console.log('books searched: ', booksSearched);
                 if (booksSearched.length > 0){
                     booksSearched.sort(sortBy('title'));
                     this.setState({
