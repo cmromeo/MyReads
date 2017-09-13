@@ -32,10 +32,17 @@ class BooksApp extends React.Component {
     * @param {shelf} shelf - The name of the shelf, either read, wantToRead, currentlyReading
     */
     updateShelf = (book, shelf) => {
-        /** * @description Update the book in the backend then download */
-        BooksAPI.update(book, shelf).then((jsonResponse) => {
-            this.downloadBooks();
-        });
+        if (book.shelf !== shelf) {
+            BooksAPI.update(book, shelf).then(() => {
+                book.shelf = shelf;
+
+                /** Filter out the book and append it to the end of the list
+                so it appears at the end of whatever shelf it was added to. */
+                this.setState(state => ({
+                    books: state.books.filter(b => b.id !== book.id).concat([ book ])
+                }));
+            });
+        }
     }
 
     /**
