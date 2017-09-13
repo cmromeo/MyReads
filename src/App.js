@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
-import {Route} from 'react-router-dom'
-import Shelves from './Shelves'
-import Search from './Search'
-import * as BooksAPI from './BooksAPI'
+import {Route} from 'react-router-dom';
+import Shelves from './Shelves';
+import Search from './Search';
+import * as BooksAPI from './BooksAPI';
 
 /**
 * @description The root component
