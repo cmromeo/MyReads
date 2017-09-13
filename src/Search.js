@@ -9,6 +9,10 @@ class Search extends Component {
         searchedBooks: []
     }
 
+    onShelfChange(book, e){
+        this.props.changeShelf(book, e.target.value);
+    }
+
     searchBooks(query){
         if (query){
             BooksAPI.search(query, 20).then((booksSearched) => {
@@ -27,7 +31,6 @@ class Search extends Component {
             });
         }
     }
-
     
     render() {
         const {books} = this.props;
@@ -68,7 +71,7 @@ class Search extends Component {
                                             backgroundRepeat: "no-repeat",
                                             backgroundSize: "cover" }}></div>
                                     <div className="book-shelf-changer">
-                                    <select value={book.shelf} >
+                                    <select value={book.shelf} onChange={(e) => this.onShelfChange(book, e)} >
                                         <option value="wantToRead" disabled>Move to...</option>
                                         <option value="currentlyReading" >Currently Reading</option>
                                         <option value="wantToRead">Want to Read</option>
