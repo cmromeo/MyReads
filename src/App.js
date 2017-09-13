@@ -20,7 +20,6 @@ class BooksApp extends React.Component {
     updateShelf = (book, shelf) => {
         BooksAPI.update(book, shelf).then((jsonResponse) => {
             this.downloadBooks();
-            console.log('db changed state: ', this.state);
         });
     }
 
